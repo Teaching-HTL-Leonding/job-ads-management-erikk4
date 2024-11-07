@@ -1,0 +1,19 @@
+@if (jobAd()) {
+  <h1>JobAd Details</h1>
+  <h2>{{ jobAd()?.title }}</h2>
+  <p>{{ jobAd()?.textEN }}</p>
+  @if (jobAd()?.translations !== undefined) {
+    <h2>Translations</h2>
+    <p>Übersetzung: {{ jobAd()?.translations?.[0]?.translatedText }}</p>
+    @if (jobAd()?.translations?.[0]?.translation !== undefined) {
+      <p>Andere Übersetzung: {{ jobAd()?.translations?.[0]?.translation }}</p>
+    }
+  }
+
+  <h2>Edit JobAd</h2>
+  <p>Title: </p>
+  <input type="text" placeholder="{{ jobAd()?.title}}" [(ngModel)]="jobAdTitle">
+  <input type="text" placeholder="{{ jobAd()?.textEN}}" [(ngModel)]="jobAdText">
+
+  <button (click)="editJobAd(jobAd()?.id, jobAdTitle(), jobAdText())">Edit</button>
+}
