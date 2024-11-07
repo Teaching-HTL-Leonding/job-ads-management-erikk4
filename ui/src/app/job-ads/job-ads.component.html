@@ -1,0 +1,18 @@
+<h1>Job-Ads</h1>
+
+@if (jobAds()) {
+  <ul class="job-ads-list">
+    @for (jobAd of jobAds(); track jobAd.id) {
+      <li class="job-ad-item">
+        <h2>{{ jobAd.id }}</h2>
+        <p>{{ jobAd.title }}</p>
+        <p>{{ jobAd.textEN }}</p>
+        <button (click)="deleteJobAd(jobAd.id)">Delete</button>
+        <br>
+        <a [routerLink]="['/job-ad-details', jobAd.id]">Detail Page</a>
+
+      </li>
+    }
+
+  </ul>
+}
